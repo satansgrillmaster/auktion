@@ -49,5 +49,7 @@ int main(){
 
     output(pointer,index);
 
+    free(pointer);
+
     return 0;
 }
