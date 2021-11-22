@@ -1,37 +1,41 @@
 #include <stdio.h>
 #include "stdlib.h"
 
-// fills and return the pointer and the amount
-int* return_pointer(int*pointer){
+// fills the pointer and returns an index
+int* return_pointer(int*index){
 
     int* values = NULL;
     int value = 0;
-    *pointer = 0;
+    int read = 0;
+
+    *index = 0;
     do{
-        if(*pointer == 0){
+        if(*index == 0){
             values = (int*) malloc(sizeof(int));
             printf("Bitte wert eingeben");
-            scanf("%d", &value);
+            read = scanf("%d", &value);
             while (getchar() != '\n');
-            values[*pointer] = value;
+            values[*index] = value;
         }
         else{
-            values = (int*) realloc(values,(*pointer + 1) * sizeof(int));
+            values = (int*) realloc(values, (*index + 1) * sizeof(int));
             printf("Bitte wert eingeben");
-            scanf("%d", &value);
+            read = scanf("%d", &value);
             while (getchar() != '\n');
-            values[*pointer] = value;
+            values[*index] = value;
         }
-        (*pointer)++;
+        (*index)++;
     } while (value > 0);
 
     return values;
 }
 
+//output
 void output(int* pointer, int index){
 
     for(int i = 0; i < index;i++){
-        printf("%d\t", pointer[i]);
+        printf("%d\t", *pointer);
+        pointer++;
     }
 
 }
